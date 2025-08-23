@@ -5,6 +5,8 @@ import indofood from '../assets/indofood.png'
 import tokopedia from '../assets/tokopedia.png'
 import profile from '../assets/profile.jpg'
 import { useState } from "react";
+import Footer from '../components/Footer'
+import CountUp from "react-countup"
 
 const LandingPage = () => {
     const [active1, setActive1] = useState(false)
@@ -17,45 +19,105 @@ const LandingPage = () => {
             <Header />
 
             {/* Quick Fact Start */}
-            <section className=" flex justify-center items-center h-screen" id='quick'>
+
+            <section
+                className="flex justify-center items-center h-fit py-20 px-6 bg-gradient-to-r from-indigo-300 via-purple-100 to-blue-100 rounded-3xl mx-6 md:mx-20"
+                id="quick"
+            >
                 <div className="container">
+                    {/* Title */}
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl text-center font-serif mb-16">
+                        Quick Facts
+                    </h1>
 
-                    <h1 className='text-4xl md:text-9xl text-center font-serif'>Quick Facts</h1>
+                    {/* Cards */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
+                        {/* Card 1 */}
+                        <div className="bg-white shadow-lg w-full md:w-100 md:h-100 p-8 flex flex-col justify-center items-center rounded-3xl hover:scale-105 transition transform duration-300">
+                            <div className="bg-indigo-100 p-6 rounded-full mb-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-20">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z" />
+                                </svg>
 
-                    <div className="flex flex-col md:flex-row w-full justify-between items-center mt-20 mb-20 md:mt-40 md:mb-40 gap-10 md:gap-0" id='card-container'>
-                        <div className="bg-gray-200 w-50 h-75 p-3  md:w-100 md:h-150 md:p-5 flex flex-col justify-center items-center rounded-4xl" id='card1'>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-20 md:size-50 opacity-60">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z" />
-                            </svg>
-                            <div className="flex flex-col justify-center items-center gap-7 md:mt-10">
-                                <p className='text-2xl md:text-4xl font-manrope font-bold'>Over</p>
-                                <h3 className='text-4xl md:text-7xl font-manrope font-bold'>6000 ++</h3>
-                                <p className='text-2xl md:text-4xl font-manrope font-bold'>Job Listing</p>
+                            </div>
+                            <p className="text-lg font-semibold">Over</p>
+                            <h3 className="text-4xl md:text-5xl font-bold text-indigo-600">
+                                <CountUp end={6000} duration={3} separator="," /> +
+                            </h3>
+                            <p className="text-gray-600 mt-2">Job Listings</p>
+                        </div>
+
+                        {/* Card 2 */}
+                        <div className="bg-white shadow-lg w-full md:w-100  p-8 flex flex-col justify-center items-center rounded-3xl hover:scale-105 transition transform duration-300">
+                            <div className="bg-purple-100 p-6 rounded-full mb-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-20">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
+                                </svg>
+
+                            </div>
+                            <p className="text-lg font-semibold">Over</p>
+                            <h3 className="text-4xl md:text-5xl font-bold text-purple-600">
+                                <CountUp end={300} duration={3} /> +
+                            </h3>
+                            <p className="text-gray-600 mt-2">Companies Partnered</p>
+                        </div>
+
+                        {/* Card 3 */}
+                        <div className="bg-white shadow-lg w-full md:w-100 p-8 flex flex-col justify-center items-center rounded-3xl hover:scale-105 transition transform duration-300">
+                            <div className="bg-blue-100 p-6 rounded-full mb-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-20">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                </svg>
+
+                            </div>
+                            <h3 className="text-2xl md:text-3xl font-bold text-blue-600 text-center">
+                                Thousands
+                            </h3>
+                            <p className="text-gray-600 mt-2 text-center">
+                                Job Seekers Helped
+                            </p>
+                        </div>
+
+                        <div className="col-span-1 md:col-span-3 flex justify-center gap-50 my-20">
+                            <div className="bg-white shadow-lg w-full md:w-100 md:h-100 p-8 flex flex-col justify-center items-center rounded-3xl hover:scale-105 transition transform duration-300">
+                                <div className="bg-green-100 p-6 rounded-full mb-6">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-20">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+                                    </svg>
+
+                                </div>
+                                <h3 className="text-3xl md:text-4xl font-bold text-green-600">
+                                    <CountUp end={63000} duration={3} separator="," /> +
+                                </h3>
+                                <p className="text-gray-600 mt-2 text-center">
+                                    Job Data Processed
+                                </p>
                             </div>
 
-                        </div>
-                        <div className="bg-gray-200 w-50 h-75 p-3 md:w-100 md:h-150 md:p-5 flex flex-col justify-center items-center rounded-4xl" id='card2'>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-20 md:size-50 opacity-60">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
-                            </svg>
+                            {/* Card 5 - Accuracy */}
+                            <div className="bg-white shadow-lg w-full md:w-100 p-8 flex flex-col justify-center items-center rounded-3xl hover:scale-105 transition transform duration-300">
+                                <div className="bg-pink-100 p-6 rounded-full mb-6">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" className='size-20'>
+                                        <line x1="19" y1="5" x2="5" y2="19" />
+                                        <circle cx="7.5" cy="7.5" r="2.25" />
+                                        <circle cx="16.5" cy="16.5" r="2.25" />
+                                    </svg>
 
-                            <div className="flex flex-col text-center justify-center items-center gap-7 md:mt-10">
-                                <p className='text-2xl md:text-4xl font-manrope font-bold'>Over</p>
-                                <h3 className='text-4xl md:text-7xl font-manrope font-bold'>300 ++</h3>
-                                <p className='text-2xl md:text-4xl font-manrope font-bold'>Companies Partnered</p>
-                            </div>
-
-                        </div>
-                        <div className="bg-gray-200 w-50 h-75 p-3 md:w-100 md:h-150 md:p-5 flex flex-col justify-center items-center rounded-4xl" id='card3'>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className=" size-20 md:size-50 opacity-60">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 0 1 3 3h-15a3 3 0 0 1 3-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 0 1-.982-3.172M9.497 14.25a7.454 7.454 0 0 0 .981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 0 0 7.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 0 0 2.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 0 1 2.916.52 6.003 6.003 0 0 1-5.395 4.972m0 0a6.726 6.726 0 0 1-2.749 1.35m0 0a6.772 6.772 0 0 1-3.044 0" />
-                            </svg>
-
-                            <div className="flex flex-col justify-center items-center gap-7 md:mt-10">
-                                <p className='text-2xl md:text-4xl text-center font-manrope font-bold'>Thousand Of Job Seekers Helped</p>
+                                </div>
+                                <h3 className="text-3xl md:text-4xl font-bold text-pink-600">
+                                    <CountUp end={95} duration={3} />%
+                                </h3>
+                                <p className="text-gray-600 mt-2 text-center">
+                                    Accurate Recommendations
+                                </p>
                             </div>
                         </div>
                     </div>
+
+                    {/* Call to Action */}
+                    <p className="text-center text-4xl my-12 text-gray-700 italic">
+                        Bergabunglah bersama ribuan pencari kerja yang sudah menemukan impian mereka di sini 🚀
+                    </p>
                 </div>
             </section>
 
@@ -252,6 +314,8 @@ const LandingPage = () => {
 
 
             {/* people say end */}
+
+            <Footer />
 
 
         </div>
