@@ -1,22 +1,102 @@
 import React from 'react'
-import Header from '../components/Header'
+import Navbar from '../components/Navbar'
+import landing1 from "../assets/Landing1.jpg";
 import shopee from '../assets/shopee.png'
 import indofood from '../assets/indofood.png'
 import tokopedia from '../assets/tokopedia.png'
 import profile from '../assets/profile.jpg'
+
 import { useState } from "react";
 import Footer from '../components/Footer'
 import CountUp from "react-countup"
+import { motion, AnimatePresence } from "framer-motion";
+import Modal from '../components/Modal'
+
 
 const LandingPage = () => {
+    const data = [
+        {
+            name: "Arthur Aftur",
+            job: "Software Engineering",
+            text: "Lorem ipsumvoluptate tempore, aut blanditiis ratione laborum nesciunt! Sapiente, beatae?",
+            profile: profile,
+        },
+        {
+            name: "Arthur Aftur",
+            job: "Software Engineering",
+            text: "Lorem ipsumvoluptate tempore, aut blanditiis ratione laborum nesciunt! Sapiente, beatae?",
+            profile: profile,
+        },
+        {
+            name: "Arthur Aftur",
+            job: "Software Engineering",
+            text: "Lorem ipsumvoluptate tempore, aut blanditiis ratione laborum nesciunt! Sapiente, beatae?",
+            profile: profile,
+        },
+        {
+            name: "Arthur Aftur",
+            job: "Software Engineering",
+            text: "Lorem ipsumvoluptate tempore, aut blanditiis ratione laborum nesciunt! Sapiente, beatae?",
+            profile: profile,
+        },
+        {
+            name: "Arthur Aftur",
+            job: "Software Engineering",
+            text: "Lorem ipsumvoluptate tempore, aut blanditiis ratione laborum nesciunt! Sapiente, beatae?",
+            profile: profile,
+        },
+    ];
+
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const prevSlide = () => {
+        setCurrentIndex((prev) => prev === 0 ? data.length - 1 : prev - 1);
+    };
+
+    const nextSlide = () => {
+        setCurrentIndex((prev) => prev === data.length - 1 ? 0 : prev + 1);
+    };
+
     const [active1, setActive1] = useState(false)
     const [active2, setActive2] = useState(false)
     const [active3, setActive3] = useState(false)
     const [active4, setActive4] = useState(false)
     const [active5, setActive5] = useState(false)
+
+    const [isOpen, SetIsOpen] = useState(false)
     return (
         <div className=''>
-            <Header />
+            <Navbar OpenModal={() => SetIsOpen(true)} />
+            <Modal isOpen={isOpen} onClose={() => SetIsOpen(false)} title="Choose what you wanna be?">
+                <div className="flex justify-between p-10">
+                    <div className="flex flex-col justify-center items-center w-50 h-80 ">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-20">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                        </svg>
+                        <p className='text-lg font-mono text-center my-5'>Discover your career opportunities. Log in now and start your journey to the dream job!</p>
+                        <button type="submit" className='text-lg font-bold w-full bg-blue-400 rounded-4xl p-2' >Join as Job Seeker</button>
+                    </div>
+                    <div className="w-1 h-80 bg-black/50"></div>
+                    <div className="flex flex-col justify-center items-center w-50 h-80">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-20">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+                        </svg>
+                        <p className='text-lg font-mono text-center my-5'>Build your winning team. Log in now to find and recruit top talent!</p>
+                        <button type="submit" className='text-lg font-bold w-full mt-6 bg-blue-400 rounded-4xl p-2' >Join as Company</button>
+                    </div>
+                </div>
+            </Modal>
+
+            <header className='w-full pt-20'>
+                <section className='container mx-auto flex flex-col justify-center items-center ' id='header'>
+                    {/* <img src={logo} alt="" /> */}
+                    <h1 className='text-4xl md:text-9xl lg:text-9xl font-serif pt-25 text-center' >Turn Your Passion Into A Career.</h1>
+
+                    <div className="bg-gray-500 overflow-y-hidden-hidden  flex justify-center items-center mt-30 m-20 md:m-80 rounded-4xl w-100 md:w-full h-60 md:h-140">
+                        <img src={landing1} className='md:mx-5 mb-20 md:mb-45  md:p-0 max-w-xs md:max-w-none rounded-t-4xl shadow-2xl' alt="" />
+                    </div>
+                </section>
+            </header>
 
             {/* Quick Fact Start */}
 
@@ -172,109 +252,56 @@ const LandingPage = () => {
                 <div className="container">
                     <h1 className='text-4xl md:text-8xl font-serif text-center'>What They Say O-O</h1>
 
-                    <div id="say-container" className='flex justify-between '>
-                        <div className="w-120 shadow-2xl rounded-4xl p-4 mt-30" id='nilai'>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg" fill="blue" viewBox="0 0 24 24" className=" size-20 md:size-40 opacity-60"><path d="M7 6c-2.21 0-4 1.79-4 4v6c0 2.21 1.79 4 4 4h2v-6H7v-2h4V6H7zm10 0c-2.21 0-4 1.79-4 4v6c0 2.21 1.79 4 4 4h2v-6h-2v-2h4V6h-4z" />
+                    <div className="relative w-full flex justify-center items-center">
+                        <button
+                            onClick={prevSlide}
+                            className="absolute left-2 z-20  bg-white shadow-md rounded-full p-3 hover:scale-110 transition"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={4} stroke="currentColor" className="size-7 ">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                             </svg>
-                            <p className='md:ml-15 md:text-4xl'>Lorem ipsumvoluptate tempore, aut blanditiis ratione laborum nesciunt! Sapiente, beatae?</p>
 
-                            <div className="flex justify-center items-center gap-10" id='profile-say'>
-                                <img src={profile} alt="" className='rounded-full w-25 h-25 md:mt-10' id='profile-pict' />
-                                <div className="flex flex-col md:mt-10 " id='profile-name'>
-                                    <h6 className='text-3xl font-bold'>Arthur Aftur</h6>
-                                    <p className='text-2xl font-manrope'>Software Engineering</p>
-                                    <div className=" flex justify-between items-center md:mt-2" id='profile-star'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="yellow" className="size-10">
-                                            <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
+                        </button>
+                        <div className="overflow-hidden w-[90%] relative">
+                            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+                            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+                            <div className="flex gap-10 p-20 transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}>
+                                {data.map((item, i) => (
+                                    <div key={i} className="w-120 flex-shrink-0 shadow-2xl rounded-4xl p-4 mt-30 bg-white" id="nilai">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="blue" viewBox="0 0 24 24" className=" size-20 md:size-40 opacity-60">
+                                            <path d="M7 6c-2.21 0-4 1.79-4 4v6c0 2.21 1.79 4 4 4h2v-6H7v-2h4V6H7zm10 0c-2.21 0-4 1.79-4 4v6c0 2.21 1.79 4 4 4h2v-6h-2v-2h4V6h-4z" />
                                         </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="yellow" className="size-10">
-                                            <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="yellow" className="size-10">
-                                            <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="yellow" className="size-10">
-                                            <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
-                                        </svg>
+                                        <p className="md:ml-15 md:text-4xl">{item.text}</p>
 
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-10">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
-                                        </svg>
-
+                                        <div
+                                            className="flex justify-center items-center gap-10"
+                                            id="profile-say"
+                                        >
+                                            <img src={item.profile} alt="" className="rounded-full w-25 h-25 md:mt-10" id="profile-pict" />
+                                            <div className="flex flex-col md:mt-10 " id="profile-name">
+                                                <h6 className="text-3xl font-bold">{item.name}</h6>
+                                                <p className="text-2xl font-manrope">{item.job}</p>
+                                                <div className=" flex justify-between items-center md:mt-2" id="profile-star">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="yellow" className='size-10'>
+                                                        <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                                                            clipRule="evenodd" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                ))}
                             </div>
-
                         </div>
-                        <div className="w-120 shadow-2xl rounded-4xl p-4 mt-30" id='nilai'>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg" fill="blue" viewBox="0 0 24 24" className=" size-20 md:size-40 opacity-60"><path d="M7 6c-2.21 0-4 1.79-4 4v6c0 2.21 1.79 4 4 4h2v-6H7v-2h4V6H7zm10 0c-2.21 0-4 1.79-4 4v6c0 2.21 1.79 4 4 4h2v-6h-2v-2h4V6h-4z" />
+                        <button
+                            onClick={nextSlide}
+                            className="absolute right-2 z-20 bg-white shadow-md rounded-full p-3 hover:scale-110 transition"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={4} stroke="currentColor" className="size-7">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                             </svg>
-                            <p className='md:ml-15 md:text-4xl'>Lorem ipsumvoluptate tempore, aut blanditiis ratione laborum nesciunt! Sapiente, beatae?</p>
 
-                            <div className="flex justify-center items-center gap-10" id='profile-say'>
-                                <img src={profile} alt="" className='rounded-full w-25 h-25 md:mt-10' id='profile-pict' />
-                                <div className="flex flex-col md:mt-10 " id='profile-name'>
-                                    <h6 className='text-3xl font-bold'>Arthur Aftur</h6>
-                                    <p className='text-2xl font-manrope'>Software Engineering</p>
-                                    <div className=" flex justify-between items-center md:mt-2" id='profile-star'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="yellow" className="size-10">
-                                            <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="yellow" className="size-10">
-                                            <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="yellow" className="size-10">
-                                            <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="yellow" className="size-10">
-                                            <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
-                                        </svg>
-
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-10">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
-                                        </svg>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div className="w-120 shadow-2xl rounded-4xl p-4 mt-30" id='nilai'>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg" fill="blue" viewBox="0 0 24 24" className=" size-20 md:size-40 opacity-60"><path d="M7 6c-2.21 0-4 1.79-4 4v6c0 2.21 1.79 4 4 4h2v-6H7v-2h4V6H7zm10 0c-2.21 0-4 1.79-4 4v6c0 2.21 1.79 4 4 4h2v-6h-2v-2h4V6h-4z" />
-                            </svg>
-                            <p className='md:ml-15 md:text-4xl'>Lorem ipsumvoluptate tempore, aut blanditiis ratione laborum nesciunt! Sapiente, beatae?</p>
-
-                            <div className="flex justify-center items-center gap-10" id='profile-say'>
-                                <img src={profile} alt="" className='rounded-full w-25 h-25 md:mt-10' id='profile-pict' />
-                                <div className="flex flex-col md:mt-10 " id='profile-name'>
-                                    <h6 className='text-3xl font-bold'>Arthur Aftur</h6>
-                                    <p className='text-2xl font-manrope'>Software Engineering</p>
-                                    <div className=" flex justify-between items-center md:mt-2" id='profile-star'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="yellow" className="size-10">
-                                            <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="yellow" className="size-10">
-                                            <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="yellow" className="size-10">
-                                            <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="yellow" className="size-10">
-                                            <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
-                                        </svg>
-
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-10">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
-                                        </svg>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
+                        </button>
                     </div>
 
                     <div className="flex mt-80 mb-80" id='experience'>
