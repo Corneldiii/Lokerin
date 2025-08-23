@@ -6,14 +6,19 @@ import indofood from '../assets/indofood.png'
 import tokopedia from '../assets/tokopedia.png'
 import profile from '../assets/profile.jpg'
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Footer from '../components/Footer'
 import CountUp from "react-countup"
 import { motion, AnimatePresence } from "framer-motion";
 import Modal from '../components/Modal'
+import { useNavigate } from 'react-router-dom';
 
 
 const LandingPage = () => {
+    const navigate = useNavigate();
+
+    // scroll penilaian
+
     const data = [
         {
             name: "Arthur Aftur",
@@ -57,13 +62,76 @@ const LandingPage = () => {
         setCurrentIndex((prev) => prev === data.length - 1 ? 0 : prev + 1);
     };
 
+    // mekanisme bintang
+
     const [active1, setActive1] = useState(false)
     const [active2, setActive2] = useState(false)
     const [active3, setActive3] = useState(false)
     const [active4, setActive4] = useState(false)
     const [active5, setActive5] = useState(false)
 
+    useEffect(() => {
+        if (!active1) {
+            setActive1(false)
+            setActive2(false)
+            setActive3(false)
+            setActive4(false)
+            setActive5(false)
+        }
+
+    }, [active1]);
+    useEffect(() => {
+        if (active2) {
+            setActive1(true);
+        } else {
+            setActive1(false)
+            setActive2(false)
+        }
+
+    }, [active2]);
+
+    useEffect(() => {
+        if(active3){
+            setActive2(true);
+            setActive3(true);
+        }else{
+            setActive1(false)
+            setActive2(false)
+            setActive3(false)
+        }
+    },[active3])
+
+    useEffect(() => {
+        if(active4){
+            setActive2(true);
+            setActive3(true);
+            setActive4(true);
+        }else{
+            setActive1(false)
+            setActive2(false)
+            setActive3(false)
+            setActive4(false)
+        }
+    },[active4])
+
+    useEffect(() => {
+        if(active5){
+            setActive2(true);
+            setActive3(true);
+            setActive4(true);
+            setActive5(true);
+        }else{
+            setActive1(false)
+            setActive2(false)
+            setActive3(false)
+            setActive4(false)
+            setActive5(false)
+        }
+    },[active5])
+
+    // modal
     const [isOpen, SetIsOpen] = useState(false)
+
     return (
         <div className=''>
             <Navbar OpenModal={() => SetIsOpen(true)} />
@@ -74,7 +142,7 @@ const LandingPage = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
                         </svg>
                         <p className='text-lg font-mono text-center my-5'>Discover your career opportunities. Log in now and start your journey to the dream job!</p>
-                        <button type="submit" className='text-lg font-bold w-full bg-blue-400 rounded-4xl p-2' >Join as Job Seeker</button>
+                        <button type="submit" className='text-lg font-bold w-full bg-blue-400 rounded-4xl p-2 cursor-pointer hover:bg-blue-100 hover:text-stone-500' onClick={() => navigate("/SignUp")} >Join as Job Seeker</button>
                     </div>
                     <div className="w-1 h-80 bg-black/50"></div>
                     <div className="flex flex-col justify-center items-center w-50 h-80">
@@ -82,7 +150,7 @@ const LandingPage = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
                         </svg>
                         <p className='text-lg font-mono text-center my-5'>Build your winning team. Log in now to find and recruit top talent!</p>
-                        <button type="submit" className='text-lg font-bold w-full mt-6 bg-blue-400 rounded-4xl p-2' >Join as Company</button>
+                        <button type="submit" className='text-lg font-bold w-full mt-6 bg-blue-400 rounded-4xl p-2 cursor-pointer hover:bg-blue-100 hover:text-stone-500' onClick={() => navigate("/SignUp")} >Join as Company</button>
                     </div>
                 </div>
             </Modal>
@@ -255,7 +323,7 @@ const LandingPage = () => {
                     <div className="relative w-full flex justify-center items-center">
                         <button
                             onClick={prevSlide}
-                            className="absolute left-2 z-20  bg-white shadow-md rounded-full p-3 hover:scale-110 transition"
+                            className="absolute left-2 z-5  bg-white shadow-md rounded-full p-3 hover:scale-110 transition"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={4} stroke="currentColor" className="size-7 ">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
@@ -263,8 +331,8 @@ const LandingPage = () => {
 
                         </button>
                         <div className="overflow-hidden w-[90%] relative">
-                            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-                            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+                            <div className="absolute left-0 top-0 bottom-0 w-20  bg-gradient-to-r from-white to-transparent z-4 pointer-events-none"></div>
+                            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-4 pointer-events-none"></div>
                             <div className="flex gap-10 p-20 transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}>
                                 {data.map((item, i) => (
                                     <div key={i} className="w-120 flex-shrink-0 shadow-2xl rounded-4xl p-4 mt-30 bg-white" id="nilai">
@@ -295,7 +363,7 @@ const LandingPage = () => {
                         </div>
                         <button
                             onClick={nextSlide}
-                            className="absolute right-2 z-20 bg-white shadow-md rounded-full p-3 hover:scale-110 transition"
+                            className="absolute right-2 z-5 bg-white shadow-md rounded-full p-3 hover:scale-110 transition"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={4} stroke="currentColor" className="size-7">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />

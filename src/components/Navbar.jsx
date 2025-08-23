@@ -14,7 +14,7 @@ const Navbar = ({OpenModal}) => {
                     <Link to='dream' smooth={true} duration={500} offset={-100} className='cursor-pointer text-lg hover:text-gray-300'>Big Dream</Link>
                     <Link to='people' smooth={true} duration={500}  className='cursor-pointer text-lg hover:text-gray-300'>People Love It</Link>
                 </ul>
-                <button onClick={OpenModal}  className='hidden cursor-pointer bg-blue-600 text-lg font-manrope font-bold hover:text-white  md:block bg-blue px-8 py-2 rounded-full'>Sign Up</button>
+                <button onClick={OpenModal}  className='hidden cursor-pointer bg-blue-200 text-lg font-manrope font-bold hover:text-white  md:block bg-blue px-8 py-2 rounded-full'>Sign Up</button>
             </div>
 
             
