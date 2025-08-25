@@ -3,3 +3,21 @@
 @theme {
   --font-manrope: "Manrope", sans-serif;
 }
+
+::-webkit-scrollbar {
+  height: 8px; 
+}
+
+::-webkit-scrollbar-track {
+  background: #e5e7eb;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b82f6; 
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb; 
+}
