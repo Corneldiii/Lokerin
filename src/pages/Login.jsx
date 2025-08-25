@@ -16,7 +16,7 @@ const Login = () => {
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#4A9FF5] via-[#9A8DFF] to-[#C4E0F9]">
 
-            <img src={logo} alt="" className='w-50 h-15 my-10' />
+            <img src={logo} alt="" className='w-50 h-15 my-10 drop-shadow-2xl' />
             <div className="bg-white p-8 rounded-2xl shadow-lg w-fit">
                 <h1 className='text-center text-2xl my-5 md:text-4xl  font-mono font-bold'>Welcome Back!</h1>
                 <p className='text-center mb-20 text-xl text-gray-400'>we missed you! please enter yourd details.</p>

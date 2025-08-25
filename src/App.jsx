@@ -4,6 +4,7 @@ import Header from './pages/LandingPage';
 import SignUpCO from './pages/SignUpCO';
 import SignUpJS from './pages/SignUpJS';
 import Login from './pages/Login';
+import Recom from './pages/Recom';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/SignUpJS" element={<SignUpJS/>} />
         <Route path="/SignUpCO" element={<SignUpCO/>} />
         <Route path="/Login" element={<Login/>} />
+        <Route path="/Recom" element={<Recom/>} />
       </Routes>
     </Router>
   )
