@@ -50,6 +50,7 @@ const SignUpJS = () => {
             </div>
             <div className="flex flex-col">
               <label htmlFor="PassVerJS" className='font-serif md:mx-5 md:my-2 md:text-2xl'>Confirmation Password</label>
+              <div className=""></div>
               <input
                 type={showVerif ? "text" : "password"}
                 name="PassVerJS"
@@ -82,8 +83,8 @@ const SignUpJS = () => {
 
             <button
               type="submit"
-              className='w-30 md:w-75 h-10 md:h-15 bg-blue-800 rounded-4xl shadow-2xl font-bold text-white md:text-2xl hover:bg-blue-600 hover:text-white/50 cursor-pointer'>Sign UP</button>
-
+              className='w-30 md:w-75 h-10 md:h-15 bg-blue-800 rounded-4xl shadow-2xl font-bold text-white md:text-2xl hover:bg-blue-600 hover:text-white/50 cursor-pointer'
+              >Sign UP</button>
           </div>
         </div>
       </div>
