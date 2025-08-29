@@ -2,6 +2,7 @@
 
 @theme {
   --font-manrope: "Manrope", sans-serif;
+  --font-jersey : "Jersey 25", cursive; 
 }
 
 ::-webkit-scrollbar {

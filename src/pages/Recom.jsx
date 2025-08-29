@@ -3,6 +3,7 @@ import Profile from '../components/Profile'
 import Navside from '../components/Navside'
 import company from '../assets/indofood.png'
 import Gauge from '../components/Gauge'
+import docspdf from '../assets/docspdf.png';
 
 const Recom = () => {
     return (
@@ -60,7 +61,19 @@ const Recom = () => {
 
                     </div>
                 </div>
-                <div className="bg-blue-300 w-200 h-200"></div>
+                <div className="bg-white shadow-2xl w-200 h-fit p-10 rounded-4xl flex flex-col items-center">
+                    <div className="w-full h-100 border-black/50 border-4 border-dashed rounded-4xl flex flex-col justify-center items-center relative">
+                        <input type="file" id="cv-upload" className="absolute inset-0 opacity-0 cursor-pointer"/>
+                        <img src={docspdf} alt="" className="size-30 my-5" />
+                        <h1 className="font-jersey text-3xl w-60 text-center">
+                            Drag & Drop <span className="text-blue-800">PDF</span> Or <span className="text-blue-800">Docx</span> Of Your CV
+                        </h1>
+                        <p className="text-center font-jersey text-sm">
+                            Or <span className="text-blue-800 underline">Browse Here</span> On Your Computer
+                        </p>
+                    </div>
+                    <button type="submit" className="p-2 text-3xl font-jersey rounded-full text-white w-40 bg-blue-400 mt-10 cursor-pointer hover:shadow-2xl ">Upload</button>
+                </div>
             </div>
         </div>
     )
