@@ -13,7 +13,6 @@ const Gauge = ({ value }) => {
   const yellowProgress = (yellowValue / 100) * circumference;
   const greenProgress = (greenValue  / 100) * circumference;
 
-  console.log(circumference - greenProgress)
   return (
     <div className="flex items-center justify-center  w-44 h-44  relative">
       <svg
